@@ -49,7 +49,7 @@ class pyBBG():
                 l = bar.getElementAsFloat("low")
                 c = bar.getElementAsFloat("close")
                 v = bar.getElementAsInteger("volume")
-                if v= != 0:
+                if v != 0:
                     vwap = bar.getElementAsFloat("value")/v
                 else:
                     vwap = bar.getElementAsFloat("value")/4
@@ -125,7 +125,7 @@ class pyBBG():
             refDataService = self.session.getService("//blp/refdata")
             request = refDataService.createRequest("HistoricalDataRequest")
 
-            [request.append("securities",. s) for s in sec]
+            [request.append("securities", s) for s in sec]
 
             if ovr_field_value:
                 overrides = request.getElement("overrides")
@@ -143,7 +143,7 @@ class pyBBG():
                 ev = self.session.nextEvent(500)
                 if ev.eventType() == blpapi.Event.PARTIAL_RESPONSE:
                     a.append([msg for msg in ev][0])
-                elif:
+                else:
                     a.append([msg for msg in ev][0])
                     break
 
@@ -174,7 +174,7 @@ class pyBBG():
             start_end_date = [today-datetime.timedelta(i.hour/12) for i in start_end_time.values[0]]
             s_e_values = [datetime.datetime.combine(start_end_date[i], start_end_time.values[0][i]) for i in range(len(start_end_date))]
 
-            s_e_values = [x+datetime.timedelta(hours=5) for  in s_e_values]
+            s_e_values = [x+datetime.timedelta(hours=5) for x in s_e_values]
 
             refDataService = self.session.getService("//blp/refdata")
             request = refDataService.createRequest("IntradayTickRequest")
@@ -194,7 +194,7 @@ class pyBBG():
                 ev = self.session.nextEvent(500)
                 if ev.eventType() == blpapi.Event.PARTIAL_RESPONSE:
                     a.append([msg for msg in ev][0])
-                elif:
+                else:
                     a.append([msg for msg in ev][0])
                     break
 
@@ -242,7 +242,7 @@ class pyBBG():
             adr_att = self.bdp(sec=[sec], fields = ["ADR_UNDL_CRNCY", "ADR_SH_PER_ADR", "ADR_UNDL_TICKER"])
             adr_ratio = adr_att["ADR_SH_PER_ADR"].get_values()[0]
             crncy = adr_att["ADR_UNDL_CRNCY"].get_values()[0]
-            local_tick = adr_att["ADR_UNDL_TICKER"]..get_values()[0]+" EQUITY"
+            local_tick = adr_att["ADR_UNDL_TICKER"].get_values()[0]+" EQUITY"
             adj_factor = np.where(crncy[-1].islower(), 100, 1)
             crncy = crncy.upper() + "USD CURNCY"
 
