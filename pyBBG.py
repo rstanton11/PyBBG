@@ -1,5 +1,8 @@
-# pyBBG class for excel/R type access to blpapi
+'''
+pyBBG class for excel/R type access to blpapi
 
+caveat emptor: this file will have formatting issues, specifically but not limited to tab/spaces inconsistency.
+'''
 import blpapi
 import datetime
 import pandas as pd
